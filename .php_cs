@@ -1,6 +1,6 @@
 <?php
 $header = <<<EOF
-This file is part of the overtrue/websocket-client.
+This file is part of the overtrue/websocket.
 
 (c) overtrue <anzhengchao@gmail.com>
 
