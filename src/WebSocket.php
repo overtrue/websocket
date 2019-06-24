@@ -348,9 +348,7 @@ class WebSocket
         if ($payloadLength > 125) {
             // 126: 'n' means big-endian 16-bit unsigned int
             // 127: 'J' means big-endian 64-bit unsigned int
-            $unpackMode = self::PAYLOAD_LENGTH_16BIT === $payloadLength ? 'n' : 'J';
-            $unpacked = unpack($unpackMode, substr($data, 2));
-            $payloadLength = current($unpacked);
+            $payloadLength = current(unpack(self::PAYLOAD_LENGTH_16BIT === $payloadLength ? 'n' : 'J', substr($data, 2)));
         }
 
         // Try again later when fragment is downloaded
@@ -409,7 +407,7 @@ class WebSocket
 
             return null;
         } elseif ($this->hugePayload) { // this is the last fragment, and we are processing a hugePayload
-            // sp we need to retreive the whole payload
+            // sp we need to retrieve the whole payload
             $payload = $this->hugePayload .= $payload;
             $this->hugePayload = '';
         }
@@ -426,6 +424,7 @@ class WebSocket
      * @return bool|string|null
      *
      * @throws \Overtrue\WebSocket\Exceptions\InvalidOpcodeException
+     * @throws \Overtrue\WebSocket\Exceptions\ConnectionException
      */
     public function close($status = 1000, $message = 'ttfn')
     {
