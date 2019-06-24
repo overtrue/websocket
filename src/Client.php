@@ -47,6 +47,7 @@ class Client extends WebSocket
      * @param bool   $masked
      *
      * @throws \Overtrue\WebSocket\Exceptions\ConnectionException
+     * @throws \Overtrue\WebSocket\Exceptions\InvalidOpcodeException
      */
     public function send(string $payload, string $opcode = 'text', bool $masked = true)
     {
@@ -107,7 +108,6 @@ class Client extends WebSocket
         $key = base64_encode(\substr(md5(time().mt_rand(0, 100)), 0, 16));
         $segments = array_merge([
             'path' => '/',
-            'query' => '',
             'query' => '',
             'fragment' => '',
             'user' => '',
