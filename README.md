@@ -37,7 +37,7 @@ $server->send('Hello overtrue.');
 ```php
 use Overtrue\WebSocket\Client;
 
-$client = new Client('127.0.0.1:8000');
+$client = new Client('ws://127.0.0.1:8000');
 
 // send
 $client->send('Hello overtrue.');
