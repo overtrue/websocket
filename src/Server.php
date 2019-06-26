@@ -72,6 +72,7 @@ class Server extends WebSocket
      * @return bool|resource
      *
      * @throws \Overtrue\WebSocket\Exceptions\BadRequestException
+     * @throws \Overtrue\WebSocket\Exceptions\ConnectionException
      */
     public function accept()
     {

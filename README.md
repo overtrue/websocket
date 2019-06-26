@@ -11,7 +11,40 @@ $ composer require overtrue/websocket -vvv
 
 ## Usage
 
-TODO
+### Server
+
+```php
+use Overtrue\WebSocket\Server;
+
+$options = [
+    // 'port' => 8000,
+    // 'timeout' => 0,
+    // ...
+];
+$server = new Server($options);
+
+$server->accept();
+
+// receive
+$message = $server->reveive();
+
+// send
+$server->send('Hello overtrue.');
+```
+
+### Client
+
+```php
+use Overtrue\WebSocket\Client;
+
+$client = new Client('127.0.0.1:8000');
+
+// send
+$client->send('Hello overtrue.');
+
+// receive
+$message = $client->reveive();
+```
 
 ## Contributing
 
